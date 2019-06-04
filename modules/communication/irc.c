@@ -54,7 +54,7 @@ IRC_publishStatus IRC_publishHeartBeat(IRC_RobotID robotID, msg_Heartbeat heartb
 
 void IRC_publisherRun()
 {
-    //Todo: Check all the transmit buffer and convert the contents to xbee and start sending
+    //Todo: Check all the transmit buffer and convert the msgs to char string and enqueue strings sending via xbee
 }
 void IRC_recieverRun()
 {
