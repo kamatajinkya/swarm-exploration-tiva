@@ -15,10 +15,10 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include "../messages/messageHeartbeat.h"
 
 #include "hardware/comms/serialDriver.h"
-#include "modules/messages/message.h"
-#include "modules/messages/messageTimestamp.h"
+#include "modules/messages/messages.h"
 
 typedef unsigned int IRC_RobotID;
 
@@ -37,11 +37,10 @@ IRC_initStatus IRC_init(IRC_initConfig config);
 typedef enum{
     IRC_publishStatusSuccessful = 0,
     IRC_publishStatusFailed = -1,
-    IRC_publishStatusBufferOverflow = -4,
-    IRC_publishStatusPreviousMsgPending = -6,
-    IRC_publishStatusRobotIDInvalid = -7
+    IRC_publishStatusBufferOverflow = -2,
+    IRC_publishStatusRobotIDInvalid = -3
 }IRC_publishStatus;
-IRC_publishStatus IRC_publishCurrentTime(IRC_RobotID robotID, msg_Timestamp timestamp);
+IRC_publishStatus IRC_publishHeartBeat(IRC_RobotID robotID, msg_Heartbeat heartbeat);
 
 //Todo: Implement similar functions for other new types
 
@@ -51,7 +50,7 @@ typedef enum{
     IRC_recieveStatusFailed = -1,
     IRC_recieveStatusRobotIDInvalid = -2
 }IRC_recieveStatus;
-IRC_recieveStatus IRC_getLastRecievedTime(IRC_RobotID robotID, msg_Timestamp* timestamp);
+IRC_recieveStatus IRC_getLastRecievedTime(IRC_RobotID robotID, msg_Heartbeat* timestamp);
 
 void IRC_publisherRun();
 void IRC_recieverRun();

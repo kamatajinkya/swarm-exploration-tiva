@@ -10,8 +10,6 @@
 
 #include "messageType.h"
 
-extern Msg_MessegeTypeHelpers messageTypeHelpers[MSG_NUM_MESSAGETYPES];
-
 long message_serialize(const void* msg, Msg_MessageType type, long maxStrLen, char* str);
 
 Msg_MessageType message_deserialize(const char* str, long strlen, long maxMsgSize, void* msg);
